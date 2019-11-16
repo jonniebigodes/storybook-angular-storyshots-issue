@@ -36,6 +36,7 @@
     "@angular/language-service": "~8.2.14",
     "@babel/core": "^7.7.2",
     "@storybook/addon-actions": "^5.2.6",
+    "@storybook/addon-knobs": "^5.2.6",
     "@storybook/addon-links": "^5.2.6",
     "@storybook/addon-notes": "^5.2.6",
     "@storybook/addon-storyshots": "^5.2.6",
@@ -99,7 +100,9 @@
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/jest-config/fileMock.js"
     },
     "transform": {
-      "^.+\\.(ts|js|html)$": "ts-jest"
+      "^.+\\.(ts|html)$": "ts-jest",
+      "^.+\\.stories\\.[jt]sx?$": "@storybook/addon-storyshots/injectFileName",
+      "^.+\\.jsx?$": "babel-jest"
     },
     "moduleFileExtensions": [
       "ts",
