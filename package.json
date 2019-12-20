@@ -35,6 +35,9 @@
     "@angular/compiler-cli": "~8.2.14",
     "@angular/language-service": "~8.2.14",
     "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
     "@storybook/addon-actions": "^5.2.6",
     "@storybook/addon-knobs": "^5.2.6",
     "@storybook/addon-links": "^5.2.6",
@@ -68,8 +71,10 @@
   "jest": {
     "preset": "jest-preset-angular",
     "setupFilesAfterEnv": [
-      "<rootDir>/src/jest-config/setup.ts",
-      "@testing-library/jest-dom/extend-expect"
+      "<rootDir>/src/jest-config/setup.ts"
+    ],
+    "transformIgnorePatterns":[
+      "node_modules/(?!@storybook/*)"
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/old/",
@@ -90,6 +95,8 @@
       "ts-jest": {
         "tsConfig": "<rootDir>/tsconfig.spec.json",
         "stringifyContentPathRegex": "\\.html$",
+        "diagnostics": false,
+        "isolatedModules": true,
         "astTransformers": [
           "<rootDir>/node_modules/jest-preset-angular/InlineHtmlStripStylesTransformer"
         ]
@@ -101,8 +108,8 @@
     },
     "transform": {
       "^.+\\.(ts|html)$": "ts-jest",
-      "^.+\\.stories\\.[jt]sx?$": "@storybook/addon-storyshots/injectFileName",
-      "^.+\\.jsx?$": "babel-jest"
+      "^.+\\.js$": "babel-jest",
+      "^.+\\.stories\\.[jt]sx?$": "@storybook/addon-storyshots/injectFileName"
     },
     "moduleFileExtensions": [
       "ts",

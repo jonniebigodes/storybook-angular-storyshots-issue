@@ -1,3 +1,7 @@
 import 'jest-preset-angular';
 import './globalMocks';
-require('babel-plugin-require-context-hook/register')();
+/**
+ * workaround for issue with Jest
+ * Zone.js has detected that ZoneAwarePromise `(window|global).Promise` has been overwritten.
+ */
+Object.defineProperty(global, 'Promise', {writable: false, value: global.Promise});
